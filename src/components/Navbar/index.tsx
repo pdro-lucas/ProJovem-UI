@@ -9,14 +9,36 @@ import {
   Toolbar,
   Box,
   IconButton,
-  Menu,
-  MenuItem,
 } from '@mui/material';
-import { AppleLogo, List } from 'phosphor-react';
+import { AppleLogo, House, List } from 'phosphor-react';
 import MobileNavbar from './MobileNavbar';
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const navItems = [
+    {
+      id: 1,
+      label: 'Jovens',
+      icon: <House size={32} />,
+      items: {
+        label: 'Listar Todos',
+      },
+    },
+    {
+      id: 2,
+      label: 'Empresas',
+      icon: <House size={32} />,
+      items: {
+        label: 'Listar Todos',
+      },
+    },
+    {
+      id: 3,
+      label: 'Teste',
+      icon: <House size={32} />,
+    },
+  ];
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -60,7 +82,11 @@ const Navbar = () => {
           </Container>
         </Toolbar>
       </AppBar>
-      <MobileNavbar open={mobileOpen} handleDrawerToggle={handleDrawerToggle} />
+      <MobileNavbar
+        open={mobileOpen}
+        handleDrawerToggle={handleDrawerToggle}
+        navItems={navItems}
+      />
     </>
   );
 };

@@ -4,54 +4,45 @@ import {
   Divider,
   Drawer,
   List,
-  ListItem,
   ListItemButton,
   ListItemText,
   ListSubheader,
   Collapse,
 } from '@mui/material';
-import { CaretDown, CaretUp, House } from 'phosphor-react';
+import { CaretDown, CaretUp } from 'phosphor-react';
 import { useState } from 'react';
 
 interface MobileNavbarProps {
   open: boolean;
   handleDrawerToggle(): void;
+  navItems: {
+    id: number;
+    label: string;
+    icon: JSX.Element;
+    items?: {
+      label: string;
+    };
+  }[];
 }
 
-// Drawer options
 const drawerWidth = 240;
-const navItems = [
-  {
-    id: 1,
-    label: 'Jovens',
-    icon: <House size={32} />,
-    items: {
-      label: 'Listar Todos',
-    },
-  },
-  {
-    id: 2,
-    label: 'Empresas',
-    icon: <House size={32} />,
-    items: {
-      label: 'Listar Todos',
-    },
-  },
-  {
-    id: 3,
-    label: 'Teste',
-    icon: <House size={32} />,
-  },
-];
 
-const MobileNavbar = ({ open, handleDrawerToggle }: MobileNavbarProps) => {
+const MobileNavbar = ({
+  open,
+  handleDrawerToggle,
+  navItems,
+}: MobileNavbarProps) => {
   const [listOpen, setListOpen] = useState({});
 
+  /**
+   * Define se a nested list esta aberta ou fechada baseado no id.
+   * Isso é necessário para evitar o compartilhamento do mesmo estado para
+   * todas as nested list, previnindo com que todas elas sejam abertas ao mesmo tempo
+   */
   const handleClick = (id: number) => {
     setListOpen((prevState) => ({ ...prevState, [id]: !prevState[id] }));
   };
 
-  // Create drawer elements
   const drawer = (
     <Box sx={{ textAlign: 'center' }}>
       {/* Drawer Logo */}
