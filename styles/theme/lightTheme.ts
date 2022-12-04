@@ -2,7 +2,12 @@ import { createTheme } from '@mui/material/styles';
 
 const lightTheme = createTheme({
   typography: {
-    fontFamily: ['Public Sans', 'sans-serif'].join(','),
+    button: {
+      fontFamily: 'Public Sans',
+    },
+    allVariants: {
+      fontFamily: ['Public Sans', 'sans-serif'].join(','),
+    },
   },
   palette: {
     mode: 'light',
