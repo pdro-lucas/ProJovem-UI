@@ -1,11 +1,14 @@
-import { CacheProvider } from '@emotion/react';
-import { CssBaseline, ThemeProvider } from '@mui/material';
-import { Public_Sans } from '@next/font/google';
-import { NextPage } from 'next';
-import type { AppProps } from 'next/app';
-import { ReactElement, ReactNode } from 'react';
+import CssBaseline from '@mui/material/CssBaseline';
 import lightTheme from '../../styles/theme/lightTheme';
 import createEmotionCache from '../utility/createEmotionCache';
+
+import { NextPage } from 'next';
+import { ReactElement, ReactNode } from 'react';
+import { CacheProvider } from '@emotion/react';
+import type { AppProps } from 'next/app';
+
+import { ThemeProvider } from '@mui/material/styles';
+import { Public_Sans } from '@next/font/google';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
